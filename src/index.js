@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Form from './components/Form';
 import SecondForm from './components/SecondForm';
+import LoginForm from './components/LoginForm';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SecondForm />
+    <LoginForm />
   </React.StrictMode>,
   document.getElementById('root')
 );
