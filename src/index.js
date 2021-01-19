@@ -5,10 +5,12 @@ import Form from './components/Form';
 import SecondForm from './components/SecondForm';
 import LoginForm from './components/LoginForm';
 import reportWebVitals from './reportWebVitals';
+import Page from './components/Page';
+import validCredentials from "./data/credentials.json";
 
 ReactDOM.render(
   <React.StrictMode>
-    <LoginForm />
+    <Page userData={validCredentials}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

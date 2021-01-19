@@ -1,8 +1,7 @@
 import React from "react";
 import '../App.css'
-import validCredentials from "../data/credentials.json";
 
-export default function LoginForm() {
+export default function LoginForm({usersData, onLogin = f => f}) {
 
     const [logged, setLogged] = React.useState(false)
 
@@ -19,8 +18,10 @@ export default function LoginForm() {
 
     const submit = (event) => {
         event.preventDefault()
-        if(validate()) {
+        let u = validate()
+        if(u !== false) {
             setLogged(true)
+            onLogin(u)
         }
     }
 
@@ -44,11 +45,12 @@ export default function LoginForm() {
         }
         
         if (Object.keys(errs).length === 0 && errs.constructor === Object) {
-            if (credentials["email"] === validCredentials.email && credentials["password"] === validCredentials.password) {
-                return true
-            } else {
-                errs["message"] = "niepoprawne dane logowanie"
+            for(const u of usersData) {
+                if (credentials["email"] === u.email && credentials["password"] === u.password) {
+                    return u
+                }
             }
+            errs["message"] = "niepoprawne dane logowanie"
         }
 
         setErrors(errs);
