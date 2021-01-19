@@ -12,6 +12,7 @@ export default function RegisterForm({handleRegister = f => f}) {
         event.preventDefault()
         if (validate("", credentials, true)) {
             handleRegister(credentials)
+            alert("Zarejestrowano!")
         }
     }
 
